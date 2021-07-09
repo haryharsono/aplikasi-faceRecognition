@@ -1,0 +1,29 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:2:1-8:12
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:2:1-8:12
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:2:1-8:12
+	package
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:3:7-27
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:5:7-38
+	xmlns:android
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml:4:7-33
+uses-sdk
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+		ADDED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
+		INJECTED from /home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml

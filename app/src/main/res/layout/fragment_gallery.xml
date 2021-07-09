@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    tools:context=".ui.gallery.GalleryFragment">
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile Anda"/>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/button_border"
+        android:layout_width="300dp"
+        android:orientation="vertical"
+        android:layout_height="350dp">
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="NIM :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/nip_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/nama_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/alamat_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Hp :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/no_hp_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <TextView
+
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelas :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/profile_kelas"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Semester :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:textSize="18dp"
+                android:text="NIP"
+                android:id="@+id/profile_semester"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <TextView
+                android:id="@+id/password_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIP"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="10dp"
+            android:text="Edit Profile"
+            android:id="@+id/edit_profile_button"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="10dp"
+            android:text="Log OUt"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

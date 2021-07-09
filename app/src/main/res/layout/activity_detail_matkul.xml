@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    tools:context=".detailMatkulActivity">
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detail Jadwal"/>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/button_border"
+        android:layout_width="350dp"
+        android:orientation="vertical"
+        android:layout_height="500dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:src="@drawable/book" />
+
+        <TextView
+            android:id="@+id/detail_matkul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matkul"
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dosen :"
+            android:id="@+id/detail_dosen"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+        <TextView
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jam mulai:"
+            android:id="@+id/detail_jam_mulai"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+        <TextView
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jam selesai :"
+            android:id="@+id/detail_jam_selesai"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+        <TextView
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="tanggal :"
+            android:id="@+id/detail_tanggal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+
+
+        <Button
+            android:id="@+id/detail_scan"
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="Scan"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/detail_batal"
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="Batal"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

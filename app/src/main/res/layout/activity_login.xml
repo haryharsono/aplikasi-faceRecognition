@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".loginActivity">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selamat Datang"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Di Aplikasi Absensi"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mahasiswa"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textSize="40dp"
+        />
+
+    <ImageView
+        android:layout_width="189dp"
+        android:layout_height="134dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/student" />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Silahkan login"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:textSize="20dp"
+        />
+
+    <EditText
+        android:id="@+id/nim_login"
+        android:gravity="center"
+        android:hint="NIM"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_border"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="40dp"/>
+
+    <EditText
+        android:id="@+id/password_login"
+        android:gravity="center"
+        android:hint="PASSWORD"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_border"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="login"
+
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Punya Akun?"
+            />
+        <Button
+            android:id="@+id/login_daftar"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Daftar"
+            android:textColor="@color/blue"
+            android:backgroundTint="@color/white"/>
+
+    </LinearLayout>
+</LinearLayout>

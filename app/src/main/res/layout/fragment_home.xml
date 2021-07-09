@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".ui.home.HomeFragment">
+
+
+    <EditText
+        android:id="@+id/cari"
+        android:gravity="center"
+        android:hint="cari Matkul"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:background="@drawable/button_border"
+        android:layout_height="40dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycle_matkul">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

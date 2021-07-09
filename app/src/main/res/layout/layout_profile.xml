@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    >
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/button_border"
+        android:layout_width="350dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="450dp">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="NIP :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_nip_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Nip"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_nama_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Nama"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_alamat_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Hp :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_no_hp_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="No hp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/password_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password :"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_password_profile"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal"
+          android:gravity="center">
+          <TextView
+              android:textSize="18dp"
+              android:textColor="@color/black"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Kelas :"/>
+          <Spinner
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="18dp"
+              android:textColor="@color/black"
+              android:text="Semester"/>
+          <Spinner
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+      </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:text="Update Profile"
+                android:id="@+id/simpan_profile_button"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/profile_batal"
+                android:backgroundTint="@color/black"
+
+                android:text="Batal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

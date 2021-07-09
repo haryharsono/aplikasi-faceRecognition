@@ -1,0 +1,3 @@
+rootProject.name = "skripsi"
+include ':app'
+include ':openCVLibrary400pre'

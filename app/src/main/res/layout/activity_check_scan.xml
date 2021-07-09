@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".checkScanActivity"
+    android:orientation="vertical"
+    android:layout_marginTop="100dp">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:text="Data Wajah Tersimpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <ImageView
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:layout_width="152dp"
+        android:layout_height="157dp"
+        android:src="@drawable/ceklist" />
+    <Button
+        android:id="@+id/scan_wajah"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Menuju Kelas"
+
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"/>
+        />
+</LinearLayout>
