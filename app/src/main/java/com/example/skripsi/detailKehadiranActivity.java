@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
@@ -42,22 +45,24 @@ public class detailKehadiranActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide(); // hide the title bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_detail_kehadiran);
         dBuser = new DBuser( getApplicationContext() );
         datalist = dBuser.getData( FieldUser.NAMA_TABLE );
         id = datalist[0];
-        Bundle bundle=getIntent().getExtras();
-        matkul=bundle.getString("daftar_kehadiran");
+        //matkul=bundle.getStr;
+        getdata(getIntent().getStringExtra("daftar_kehadiran"));
 
         recyclerView =findViewById(R.id.recycle_daftar_detail_kehadiran);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-
-        getdata(getApplicationContext());
     }
-    void getdata(Context context){
+    void getdata(String mataKuliah){
         String url= Endpoint.URL+Endpoint.DAFTAR_DETAIL_KEHADIRAN;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -70,15 +75,18 @@ public class detailKehadiranActivity extends AppCompatActivity {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         hadir hadir = new hadir();
 
-                        hadir.setTanggal(jsonObject1.getString("id"));
-                        hadir.setWaktu(jsonObject1.getString("id_jadwal"));
-
+                        hadir.setTanggal(jsonObject1.getString("tanggal"));
+                        hadir.setWaktu(jsonObject1.getString("waktu"));
                         list.add(hadir);
-                        adapterRecentKehadiran = new adapterRecentKehadiran(list, context);
+                        Log.d("tes", hadir.getWaktu());
+                        adapterRecentKehadiran = new adapterRecentKehadiran(list, getApplicationContext());
                         recyclerView.setAdapter(adapterRecentKehadiran);
                     }
 
+                }else{
+                    Log.d("tes", "gagal");
                 }
+                Log.d("tes", "gagal");
             } catch (JSONException e) {
                 e.printStackTrace();
 
@@ -88,13 +96,19 @@ public class detailKehadiranActivity extends AppCompatActivity {
         }){
             @Override
             protected Map<String, String> getParams() {
+
+                String nilai = id.substring(1, id.length() - 1);
                 HashMap<String, String> hashMap=new HashMap<>();
-                hashMap.put("id", id);
-                hashMap.put("id_jadwal", matkul);
+                hashMap.put("id",nilai);
+                hashMap.put("id_jadwal",mataKuliah);
+                Log.d("tes",id.length()+id+"="+id);
+
+                Log.d("tes","="+mataKuliah);
                 return hashMap;
 
             }
         };
-        Volley.newRequestQueue(context).add(stringRequest).setShouldCache(false);
+        Volley.newRequestQueue(getApplicationContext()).add(stringRequest).setShouldCache(false);
+//        matkul="";
     }
 }

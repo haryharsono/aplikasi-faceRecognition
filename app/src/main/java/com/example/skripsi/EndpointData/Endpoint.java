@@ -11,6 +11,10 @@ public class Endpoint {
     public static String INSERT_KEHADIRAN="insert-kehadiran";
     public static String DAFTAR_DETAIL_KEHADIRAN="daftar-detail-kehadiran";
     public static String PROFILE_MAHASISWA="profile-mahasiswa";
+    public static String UPDATE_MAHASISWA="update-mahasiswa";
+    public static String GET_KEHADIRAN="get-kehadiran";
+    public static String PROFILE_MAHASISWA_DESIGN="profile-mahasiswa-design";
+
 
 
 

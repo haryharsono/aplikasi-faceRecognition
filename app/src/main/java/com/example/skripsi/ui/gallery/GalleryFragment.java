@@ -2,10 +2,14 @@ package com.example.skripsi.ui.gallery;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -21,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.skripsi.DBuser.DBuser;
@@ -28,6 +33,7 @@ import com.example.skripsi.DBuser.FieldUser;
 import com.example.skripsi.EndpointData.Endpoint;
 import com.example.skripsi.R;
 import com.example.skripsi.databinding.FragmentGalleryBinding;
+import com.example.skripsi.loginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +53,11 @@ public class GalleryFragment extends Fragment {
     TextView password;
     TextView kelas;
     TextView semester;
+    String[] kelasMhs;
+    String getKelas;
+    String[] semesterMhs;
+    String getSemester;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,10 +81,18 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 updateProfile(root.getContext());
+
+            }
+        });
+        root.findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dBuser.SqlExecuteQuery("delete from "+ FieldUser.NAMA_TABLE);
+                startActivity(new Intent(root.getContext(), loginActivity.class));
+                getActivity().finish();
             }
         });
         return root;
-
     }
     public void getData(Context context){
         String url= Endpoint.URL+Endpoint.PROFILE_MAHASISWA;
@@ -125,47 +144,149 @@ public class GalleryFragment extends Fragment {
         EditText alamat=dialogView.findViewById(R.id.edit_alamat_profile);
         EditText noHp=dialogView.findViewById(R.id.edit_no_hp_profile);
         EditText password=dialogView.findViewById(R.id.edit_password_profile);
+        Spinner kelas=dialogView.findViewById(R.id.spinner_kelas);
+        Spinner semester=dialogView.findViewById(R.id.spinner_semester);
+        getKelas(kelas,context);
+        getSemester(semester,context);
 
+        kelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                getKelas=kelasMhs[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        semester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                getSemester=semesterMhs[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         Button ok = dialogView.findViewById(R.id.simpan_profile_button);
         final Button batal = dialogView.findViewById(R.id.profile_batal);
         final AlertDialog dialog = builder.create();
 
         ok.setOnClickListener(v -> {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://anr.my.id/APIR/edit-profil", response -> {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean status = jsonObject.getBoolean("error");
-                    if (!status) {
-                        Toast.makeText(getActivity(), "EDIT BERHASIL ", Toast.LENGTH_SHORT).show();
+            if (nip.getText().length()<7 && nama.getText().toString().isEmpty() && alamat.getText().toString().isEmpty()
+                    && noHp.getText().length()<12 && password.getText().toString().length()<5){
 
-                    }else {
-                        Toast.makeText(getActivity(), "EDIT GAGAL ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context.getApplicationContext(),"Format tidak sesuai",Toast.LENGTH_LONG).show();
+            }
+            else {
+                String url = Endpoint.URL + Endpoint.UPDATE_MAHASISWA;
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean status = jsonObject.getBoolean("error");
+                        if (!status) {
+                            Toast.makeText(getActivity(), "EDIT BERHASIL ", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(getActivity(), "EDIT GAGAL ", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
-                }
-            }, error -> {
-            }) {
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("nip", nip.getText().toString());
-                    params.put("nama", nama.getText().toString());
-                    params.put("email", alamat.getText().toString());
-                    params.put("no_hp", noHp.getText().toString());
-                    params.put("password", password.getText().toString());
-                    return params;
-                }
+                }, error -> {
+                }) {
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("id",id);
+                        params.put("nim", nip.getText().toString());
+                        params.put("nama", nama.getText().toString());
+                        params.put("alamat", alamat.getText().toString());
+                        params.put("no_hp", noHp.getText().toString());
+                        params.put("password", password.getText().toString());
+                        params.put("kelas", getKelas);
+                        params.put("semester", getSemester);
+                        return params;
+                    }
 
-            };
-            Volley.newRequestQueue(context).add(stringRequest).setShouldCache(false);
-            dialog.cancel();
+                };
+                Volley.newRequestQueue(context).add(stringRequest).setShouldCache(false);
+                dialog.cancel();
+            }
         });
 
         batal.setOnClickListener(v -> {
             dialog.dismiss();
         });
         dialog.show();
+    }
+    private void getKelas(Spinner kelas,Context context) {
+        String url=Endpoint.URL+Endpoint.CEK_KELAS;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean status = jsonObject.getBoolean("error");
+                        if (!status) {
+                            JSONArray data = jsonObject.getJSONArray("data");
+                            kelasMhs = new String[data.length()];
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject object = data.getJSONObject(i);
+                                kelasMhs[i] = object.getString("nama_kelas");
+                            }
+                            kelas.setAdapter(new ArrayAdapter<>(context.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, kelasMhs));
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+
+            }
+
+        }, error -> {
+
+        });
+        Volley.newRequestQueue(context.getApplicationContext()).add(stringRequest).setShouldCache(false);
+    }
+    private void getSemester(Spinner semester,Context context) {
+        String url=Endpoint.URL+Endpoint.CEK_SEMESTER;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean status = jsonObject.getBoolean("error");
+                        if (!status) {
+                            JSONArray data = jsonObject.getJSONArray("data");
+                            semesterMhs = new String[data.length()];
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject object = data.getJSONObject(i);
+                                semesterMhs[i] = object.getString("semester");
+                            }
+                            semester.setAdapter(new ArrayAdapter<>(context.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, semesterMhs));
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+
+        }, error -> {
+
+        });
+        Volley.newRequestQueue(context.getApplicationContext()).add(stringRequest).setShouldCache(false);
     }
 
 }

@@ -27,11 +27,12 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/student"
+        android:label="APlikasi Absensi"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Skripsi">
-        <activity android:name=".detailKehadiranActivity"></activity>
+        <activity android:name=".detailKehadiranActivity" />
         <activity android:name=".checkScanActivity" />
         <activity android:name=".testRecog" />
         <activity android:name=".detailMatkulActivity" />

@@ -62,9 +62,10 @@ public class adapterMatkul extends RecyclerView.Adapter<adapterMatkul.holderMatk
         matkul matkul = list.get(position);
         holder.namaDosen.setText("Nama : "+matkul.getDosen());
         holder.namaMatkul.setText("Mata Kuliah : "+matkul.getNamaMatkul());
-        holder.tanggal.setText("Tanggal : "+matkul.getTanggal());
-        holder.pukulMulai.setText("Pukul : "+matkul.getPukulMulai());
-        holder.pukulSelesai.setText("Pukul : "+matkul.getPukulSelesai());
+     //   String hari=matkul.getHari();
+      //  holder.tanggal.setText("Tanggal : "+matkul.getTanggal());
+        holder.pukulMulai.setText("Pukul Mulai : "+matkul.getPukulMulai());
+        holder.pukulSelesai.setText("Pukul Selesai : "+matkul.getPukulSelesai());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,11 +85,10 @@ public class adapterMatkul extends RecyclerView.Adapter<adapterMatkul.holderMatk
         ImageView gambar;
         TextView namaDosen;
         TextView namaMatkul;
-        TextView tanggal;
+   //     TextView tanggal;
         TextView pukulMulai;
         TextView pukulSelesai;
         CardView cardView;
-
 
 
         public holderMatkul(@NonNull @NotNull View itemView) {
@@ -97,7 +97,7 @@ public class adapterMatkul extends RecyclerView.Adapter<adapterMatkul.holderMatk
             gambar=itemView.findViewById(R.id.gambar);
             namaDosen=itemView.findViewById(R.id.nama_dosen);
             namaMatkul=itemView.findViewById(R.id.nama_matkul);
-            tanggal=itemView.findViewById(R.id.tanggal);
+   //         tanggal=itemView.findViewById(R.id.tanggal);
             pukulMulai=itemView.findViewById(R.id.waktu_mulai);
             pukulSelesai=itemView.findViewById(R.id.waktu_selesai);
             cardView=itemView.findViewById(R.id.card_matkul);

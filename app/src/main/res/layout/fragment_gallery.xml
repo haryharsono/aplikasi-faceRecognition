@@ -229,6 +229,7 @@
             android:layout_height="wrap_content"
             />
         <Button
+            android:id="@+id/logout"
             android:backgroundTint="@color/black"
             android:layout_marginTop="10dp"
             android:text="Log OUt"

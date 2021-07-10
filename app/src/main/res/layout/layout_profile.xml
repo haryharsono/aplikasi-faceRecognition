@@ -170,7 +170,7 @@
               android:layout_height="wrap_content"
               android:text="Kelas :"/>
           <Spinner
-
+              android:id="@+id/spinner_kelas"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
 
@@ -181,6 +181,7 @@
               android:textColor="@color/black"
               android:text="Semester"/>
           <Spinner
+              android:id="@+id/spinner_semester"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
 

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -43,6 +45,10 @@ public class registerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide(); // hide the title bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
         getKelas();
         getSemester();
@@ -93,39 +99,49 @@ public class registerActivity extends AppCompatActivity {
 
     }
     private void simpanMahasiswa() {
-        String url= Endpoint.URL+Endpoint.REGISTER_MAHASISWA;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            try {
-                JSONObject jsonObject = new JSONObject(response);
-                boolean status = jsonObject.getBoolean("error");
-                if (!status) {
-                    Toast.makeText(getApplicationContext(), "Berhasil ", Toast.LENGTH_SHORT).show();
-                    Intent swap = new Intent(registerActivity.this, TrainActivity.class);
-                    startActivity(swap);
+        if (nim.getText().length()<7 && nama.getText().toString().isEmpty() && alamat.getText().toString().isEmpty()
+                && noHp.getText().length()<12 && password.getText().toString().length()<5){
+
+            Toast.makeText(getApplicationContext(),"Format tidak sesuai",Toast.LENGTH_LONG).show();
+        }
+        else {
+            String url = Endpoint.URL + Endpoint.REGISTER_MAHASISWA;
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean status = jsonObject.getBoolean("error");
+                    if (!status) {
+                        Toast.makeText(getApplicationContext(), "Berhasil ", Toast.LENGTH_SHORT).show();
+                        Intent swap = new Intent(registerActivity.this, TrainActivity.class);
+                        startActivity(swap);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(registerActivity.this, "Nim Tersedia", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-            }
-        }, error -> {
-            Toast.makeText(registerActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-        }) {
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("nim", nim.getText().toString());
-                params.put("nama", nama.getText().toString());
-                params.put("alamat", alamat.getText().toString());
-                params.put("no_hp", noHp.getText().toString());
-                params.put("password", password.getText().toString());
-                params.put("kelas", kelas.getSelectedItem().toString());
-                params.put("semester", semester.getSelectedItem().toString());
+            }, error -> {
+                Toast.makeText(registerActivity.this, "Nim Tersedia", Toast.LENGTH_SHORT).show();
+            }) {
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("nim", nim.getText().toString());
+                    params.put("nama", nama.getText().toString());
+                    params.put("alamat", alamat.getText().toString());
+                    params.put("no_hp", noHp.getText().toString());
+                    params.put("password", password.getText().toString());
+                    params.put("kelas", kelas.getSelectedItem().toString());
+                    params.put("semester", semester.getSelectedItem().toString());
 
-                return params;
-            }
+                    return params;
+                }
 
-        };
-        Volley.newRequestQueue(getApplicationContext()).add(stringRequest).setShouldCache(false);
-
+            };
+            Volley.newRequestQueue(getApplicationContext()).add(stringRequest).setShouldCache(false);
+        }
 
 
     }

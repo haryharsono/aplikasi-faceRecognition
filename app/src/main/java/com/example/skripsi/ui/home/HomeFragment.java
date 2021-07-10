@@ -98,36 +98,34 @@ public class HomeFragment extends Fragment {
 
     void getdata(Context context){
         String url= Endpoint.URL+Endpoint.CEK_JADWAL;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean status = jsonObject.getBoolean("error");
-                    if (!status){
-                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        list = new ArrayList<>();
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            matkul jadwal = new matkul();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                boolean status = jsonObject.getBoolean("error");
+                if (!status){
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    list = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        matkul jadwal = new matkul();
 
-                                jadwal.setNamaMatkul(jsonObject1.getString("matkul"));
-                                jadwal.setPukulMulai(jsonObject1.getString("waktu_mulai"));
-                                jadwal.setPukulSelesai(jsonObject1.getString("waktu_selesai"));
-                                jadwal.setDosen(jsonObject1.getString("dosen"));
-                                jadwal.setTanggal(jsonObject1.getString("Tanggal"));
-                                jadwal.setZoom(jsonObject1.getString("zoom"));
+                            jadwal.setNamaMatkul(jsonObject1.getString("matkul"));
+                            jadwal.setPukulMulai(jsonObject1.getString("waktu_mulai"));
+                            jadwal.setPukulSelesai(jsonObject1.getString("waktu_selesai"));
+                            jadwal.setDosen(jsonObject1.getString("nama_dosen"));
+                            jadwal.setHari(jsonObject1.getString("hari"));
+//                            jadwal.setTanggal(jsonObject1.getString("Tanggal"));
+                            jadwal.setZoom(jsonObject1.getString("zoom"));
 
-                                list.add(jadwal);
-                                adapterMatkul = new adapterMatkul(list, context);
-                                recyclerView.setAdapter(adapterMatkul);
-                        }
-
+                            list.add(jadwal);
+                            adapterMatkul = new adapterMatkul(list, context);
+                            recyclerView.setAdapter(adapterMatkul);
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
 
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
+
             }
         }, error -> {
 

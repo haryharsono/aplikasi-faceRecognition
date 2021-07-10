@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Absensi : Hadir"/>
 
             <TextView

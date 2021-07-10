@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.skripsi.R;
@@ -43,6 +44,12 @@ public class adapterRecentKehadiran extends RecyclerView.Adapter<adapterRecentKe
         hadir cekKehadiran=list.get(position);
         holder.tanggal.setText("Tanggal :"+cekKehadiran.getTanggal());
         holder.waktu.setText("Waktu :"+cekKehadiran.getWaktu());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -54,12 +61,14 @@ public class adapterRecentKehadiran extends RecyclerView.Adapter<adapterRecentKe
         ImageView gambar;
         TextView tanggal;
         TextView waktu;
+        CardView cardView;
 
         public holderAdapterRecentKehadiran(@NonNull @NotNull View itemView) {
             super(itemView);
             gambar=itemView.findViewById(R.id.gambar_recent_kehadiran);
-            tanggal=itemView.findViewById(R.id.nama_dosen);
-            waktu=itemView.findViewById(R.id.nama_matkul);
+            tanggal=itemView.findViewById(R.id.recent_tanggal_kehadiran);
+            waktu=itemView.findViewById(R.id.recent_waktu_kehadiran);
+            cardView=itemView.findViewById(R.id.recent_hadir);
         }
     }
 }

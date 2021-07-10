@@ -71,7 +71,9 @@ public class loginActivity extends AppCompatActivity {
                                 + jsonObjectData.getString( FieldUser.ID )+ " ') " );
 
                     }
+
                     startActivity(new Intent(getApplicationContext(),DrawerMainActivity.class));
+                    finish();
                 }else{
                     Toast.makeText(loginActivity.this, "NO DATA...! Daftar terlebih dahulu...!", Toast.LENGTH_SHORT).show();
                 }

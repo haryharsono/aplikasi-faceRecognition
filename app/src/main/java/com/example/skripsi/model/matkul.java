@@ -8,7 +8,7 @@ public class matkul implements Parcelable {
     private String pukulMulai;
     private String pukulSelesai;
     private String Dosen;
-    private String tanggal;
+    private String hari;
     private String zoom;
 
     public matkul(){
@@ -19,7 +19,7 @@ public class matkul implements Parcelable {
         pukulMulai = in.readString();
         pukulSelesai = in.readString();
         Dosen = in.readString();
-        tanggal = in.readString();
+        hari = in.readString();
         zoom = in.readString();
     }
 
@@ -70,6 +70,13 @@ public class matkul implements Parcelable {
     }
 
 
+    public String getHari() {
+        return hari;
+    }
+
+    public void setHari(String hari) {
+        this.hari = hari;
+    }
 
     public String getDosen() {
         return Dosen;
@@ -79,13 +86,6 @@ public class matkul implements Parcelable {
         Dosen = dosen;
     }
 
-    public String getTanggal() {
-        return tanggal;
-    }
-
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
-    }
 
     @Override
     public int describeContents() {
@@ -98,7 +98,7 @@ public class matkul implements Parcelable {
         dest.writeString(pukulMulai);
         dest.writeString(pukulSelesai);
         dest.writeString(Dosen);
-        dest.writeString(tanggal);
+        dest.writeString(hari);
         dest.writeString(zoom);
     }
 }
