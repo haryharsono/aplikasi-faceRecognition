@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -28,17 +29,13 @@ import com.example.skripsi.DBuser.FieldUser;
 import com.example.skripsi.EndpointData.Endpoint;
 import com.example.skripsi.model.matkul;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +51,8 @@ public class detailMatkulActivity extends AppCompatActivity {
     String []dataList;
     String id;
     TextView hari;
-    String cekHari;
+    String cekHari="";
+    boolean cek=false;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     @Override
@@ -87,44 +85,66 @@ public class detailMatkulActivity extends AppCompatActivity {
 
 
 
-        Date now = new Date();
-        Instant current = now.toInstant();
-        LocalDateTime ldt = LocalDateTime.ofInstant(current, ZoneId.systemDefault());
+//        Date now = new Date();
+//        Date waktuSekarang=new Date();
+//        @SuppressLint("SimpleDateFormat")
+//        SimpleDateFormat convertHari=new SimpleDateFormat("EEEE");
+//        @SuppressLint("SimpleDateFormat")
+//        SimpleDateFormat dateFormat1=new SimpleDateFormat("kk:mm:ss");
+//        String hari=convertHari.format(now);
+//        String nilai1=dateFormat1.format(waktuSekarang);
+//        LocalDateTime hari= LocalDateTime.now();
+//        DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("EEEE");
+//        String format=hari.format(dateTimeFormatter);
+//        LocalDateTime waktu=LocalDateTime.now();
+//        DateTimeFormatter dateTimeFormatter1=DateTimeFormatter.ofPattern("EEEE");
+//        dateTimeFormatter1.format(waktu);
+
+        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
+
+// textView is the TextView view that should display i
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat dateFormat=new SimpleDateFormat("EEEE");
-        SimpleDateFormat dateFormat1=new SimpleDateFormat("hh:mm:ss");
-        String nilai=dateFormat.format(now);
-        if(nilai.toLowerCase().equals("monday")){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        String currentDateandTime = sdf.format(new Date());
+        Log.d("Tanggal",currentDateandTime);
+        if(hari.toString().toLowerCase().equals("monday")){
             cekHari="senin";
-        }else if(nilai.toLowerCase().equals("tuesday")){
+        }else if(hari.toString().toLowerCase().equals("tuesday")){
             cekHari="selasa";
-        }else if(nilai.toLowerCase().equals("wednesday")){
+        }else if(hari.toString().toLowerCase().equals("wednesday")){
             cekHari="rabu";
-        }else if(nilai.toLowerCase().equals("thursday")){
+        }else if(hari.toString().toLowerCase().equals("thursday")){
             cekHari="kamis";
-        }else if(nilai.toLowerCase().equals("friday")){
+        }else if(hari.toString().toLowerCase().equals("friday")){
             cekHari="jumat";
-        }else if(nilai.toLowerCase().equals("saturday")){
+        }else if(hari.toString().toLowerCase().equals("saturday")){
             cekHari="sabtu";
-        }else if(nilai.toLowerCase().equals("tuesday")){
+        }else if(hari.toString().toLowerCase().equals("sunday")){
             cekHari="minggu";
         }
-        try {
-            Date date1=dateFormat1.parse(String.valueOf(now));
-            int result=Integer.parseInt(nilai);
+        Log.d("hari sekarang ",hari.toString().toLowerCase());
+ //       String conferReplace=waktu.toString().replace(":","");
+//        int result=Integer. parseInt(conferReplace);
+        int parseMulai=Integer.parseInt(matkul.getPukulMulai().replace(":",""));
+        int parseSelesai=Integer.parseInt(matkul.getPukulSelesai().replace(":",""));
+        Log.d("waktu sekarang",currentDateandTime);
+        Log.d("waktu mulai",String.valueOf(parseMulai));
+        Log.d("waktu selesai",String.valueOf(parseSelesai));
+//        if(matkul.getHari().equals(cekHari));{
+//            if(parseMulai<=result && result<=parseSelesai){
+//                cek=true;
+//            }
+//        }
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        if(hari.getText().toString().equals(cekHari));{
-            //Date date=dateFormat1.parse(now)
-
-        }
         findViewById(R.id.detail_scan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpanKehadiran();
+                startActivity(new Intent(getApplicationContext(),RecognizeActivity.class));
+                if(cek){
+                    //simpanKehadiran();
+                } else{
+                    Toast.makeText(getApplicationContext(),"Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
+                }
             }
         });
         findViewById(R.id.detail_batal).setOnClickListener(new View.OnClickListener() {
@@ -148,7 +168,7 @@ public class detailMatkulActivity extends AppCompatActivity {
                     startActivity(swap);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "waktu Pelajaran Belum Dimulai", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -250,7 +250,7 @@ public class TrainActivity extends AppCompatActivity implements CameraBridgeView
             public void onClick(View view) {
                 if(gray.total() == 0)
                     Toast.makeText(getApplicationContext(), "Can't Detect Faces", Toast.LENGTH_SHORT).show();
-                classifier.detectMultiScale(gray,faces,1.1,3, CASCADE_SCALE_IMAGE, new Size(30,30));
+                classifier.detectMultiScale(gray,faces,1.1,3,0|CASCADE_SCALE_IMAGE, new Size(30,30));
                 if(!faces.empty()) {
                     if(faces.toArray().length > 1)
                         Toast.makeText(getApplicationContext(), "Mutliple Faces Are not allowed", Toast.LENGTH_SHORT).show();

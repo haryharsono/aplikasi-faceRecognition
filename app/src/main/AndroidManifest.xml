@@ -41,7 +41,7 @@
         <activity android:name=".registerActivity" />
         <activity android:name=".DrawerMainActivity" />
         <activity android:name=".TrainActivity" />
-        <activity android:name=".splashScreen">
+        <activity android:name=".splashScreen" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

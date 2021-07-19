@@ -6,7 +6,7 @@
 6    <uses-sdk
 7        android:minSdkVersion="8"
 7-->/home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
-8        android:targetSdkVersion="30" />
+8        android:targetSdkVersion="31" />
 8-->/home/haryharsono/Documents/skripsiUmi/openCVLibrary400pre/src/main/AndroidManifest.xml
 9
 10</manifest>
