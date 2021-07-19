@@ -40,6 +40,7 @@ public class detailKehadiranActivity extends AppCompatActivity {
     String[] datalist;
     String id;
     String matkul;
+    String detailKehadiranMatkul;
 
 
     @Override
@@ -53,16 +54,15 @@ public class detailKehadiranActivity extends AppCompatActivity {
         dBuser = new DBuser( getApplicationContext() );
         datalist = dBuser.getData( FieldUser.NAMA_TABLE );
         id = datalist[0];
-        //matkul=bundle.getStr;
-        getdata(getIntent().getStringExtra("daftar_kehadiran"));
-
+        Intent intent=getIntent();
+        detailKehadiranMatkul=intent.getExtras().getString("detail_kehadiran_matkul");
         recyclerView =findViewById(R.id.recycle_daftar_detail_kehadiran);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
+        getdata();
     }
-    void getdata(String mataKuliah){
+    void getdata(){
         String url= Endpoint.URL+Endpoint.DAFTAR_DETAIL_KEHADIRAN;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -83,10 +83,7 @@ public class detailKehadiranActivity extends AppCompatActivity {
                         recyclerView.setAdapter(adapterRecentKehadiran);
                     }
 
-                }else{
-                    Log.d("tes", "gagal");
                 }
-                Log.d("tes", "gagal");
             } catch (JSONException e) {
                 e.printStackTrace();
 
@@ -97,18 +94,16 @@ public class detailKehadiranActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
 
-                String nilai = id.substring(1, id.length() - 1);
                 HashMap<String, String> hashMap=new HashMap<>();
-                hashMap.put("id",nilai);
-                hashMap.put("id_jadwal",mataKuliah);
+                hashMap.put("id",id);
+                hashMap.put("id_jadwal",detailKehadiranMatkul);
                 Log.d("tes",id.length()+id+"="+id);
 
-                Log.d("tes","="+mataKuliah);
+                Log.d("tes","="+detailKehadiranMatkul);
                 return hashMap;
 
             }
         };
         Volley.newRequestQueue(getApplicationContext()).add(stringRequest).setShouldCache(false);
-//        matkul="";
     }
 }

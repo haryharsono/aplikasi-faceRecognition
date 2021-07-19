@@ -36,6 +36,7 @@ import org.threeten.bp.LocalDateTime;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class detailMatkulActivity extends AppCompatActivity {
     TextView jamMulai;
     TextView jamSelesai;
     DBuser dBuser;
+    String mataKuliah;
     String []dataList;
     String id;
     TextView hari;
@@ -102,46 +104,56 @@ public class detailMatkulActivity extends AppCompatActivity {
 
         String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEEE");
+        String date=simpleDateFormat.format(calendar.getTime());
+        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("HH:mm:ss");
+        String time=simpleDateFormat1.format(calendar.getTime()).replace(":","");
+
 // textView is the TextView view that should display i
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String currentDateandTime = sdf.format(new Date());
         Log.d("Tanggal",currentDateandTime);
-        if(hari.toString().toLowerCase().equals("monday")){
+        if(date.toLowerCase().equals("monday") || date.toLowerCase().equals("senin")){
             cekHari="senin";
-        }else if(hari.toString().toLowerCase().equals("tuesday")){
+        }else if(date.toLowerCase().equals("tuesday") || date.toLowerCase().equals("selasa")){
             cekHari="selasa";
-        }else if(hari.toString().toLowerCase().equals("wednesday")){
+        }else if(date.toLowerCase().equals("wednesday")|| date.toLowerCase().equals("rabu")){
             cekHari="rabu";
-        }else if(hari.toString().toLowerCase().equals("thursday")){
+        }else if(date.toLowerCase().equals("thursday")|| date.toLowerCase().equals("kamis")){
             cekHari="kamis";
-        }else if(hari.toString().toLowerCase().equals("friday")){
-            cekHari="jumat";
-        }else if(hari.toString().toLowerCase().equals("saturday")){
+        }else if(date.toLowerCase().equals("friday")|| date.toLowerCase().equals("jum'at")){
+            cekHari="jum'at";
+        }else if(date.toLowerCase().equals("saturday")|| date.toLowerCase().equals("sabtu")){
             cekHari="sabtu";
-        }else if(hari.toString().toLowerCase().equals("sunday")){
+        }else if(date.toLowerCase().equals("sunday")|| date.toLowerCase().equals("minggu")){
             cekHari="minggu";
         }
-        Log.d("hari sekarang ",hari.toString().toLowerCase());
+        Log.d("hari sekarang ","+"+date);
+        Log.d("hari TextViewsekarang ","+"+matkul.getHari());
  //       String conferReplace=waktu.toString().replace(":","");
 //        int result=Integer. parseInt(conferReplace);
+        int waktuSekarang=Integer.parseInt(time);
         int parseMulai=Integer.parseInt(matkul.getPukulMulai().replace(":",""));
         int parseSelesai=Integer.parseInt(matkul.getPukulSelesai().replace(":",""));
-        Log.d("waktu sekarang",currentDateandTime);
-        Log.d("waktu mulai",String.valueOf(parseMulai));
-        Log.d("waktu selesai",String.valueOf(parseSelesai));
-//        if(matkul.getHari().equals(cekHari));{
-//            if(parseMulai<=result && result<=parseSelesai){
-//                cek=true;
-//            }
-//        }
+        Log.d("waktu sekarang ",waktuSekarang+"");
+        Log.d("waktu mulai ",parseMulai+"");
+        Log.d("waktu selesai ",parseSelesai+"");
+        if(matkul.getHari().equals(cekHari));{
+            if(parseMulai<=waktuSekarang && waktuSekarang<=parseSelesai){
+                cek=true;
+            }
+        }
 
         findViewById(R.id.detail_scan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RecognizeActivity.class));
                 if(cek){
-                    //simpanKehadiran();
+                   // startActivity(new Intent(getApplicationContext(),RecognizeActivity.class));
+                    Intent intent=new Intent(getApplicationContext(), RecognizeActivity.class);
+                    intent.putExtra("matakuliah",matakul.getText().toString());
+                    startActivity(intent);
                 } else{
                     Toast.makeText(getApplicationContext(),"Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
                 }
@@ -154,43 +166,7 @@ public class detailMatkulActivity extends AppCompatActivity {
             }
         });
     }
-    private void simpanKehadiran() {
 
-
-        String url= Endpoint.URL+Endpoint.INSERT_KEHADIRAN;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            try {
-                JSONObject jsonObject = new JSONObject(response);
-                boolean status = jsonObject.getBoolean("error");
-                if (!status) {
-                    Toast.makeText(getApplicationContext(), "Berhasil ", Toast.LENGTH_SHORT).show();
-                    Intent swap = new Intent(detailMatkulActivity.this, checkScanActivity.class);
-                    startActivity(swap);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "waktu Pelajaran Belum Dimulai", Toast.LENGTH_LONG).show();
-            }
-        }, error -> {
-            Toast.makeText(getApplicationContext(), "waktu Pelajaran Belum Dimulai", Toast.LENGTH_LONG).show();
-        }) {
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("id_mahasiswa", id);
-                params.put("id_jadwal", matakul.getText().toString() );
-
-                return params;
-            }
-
-        };
-        Volley.newRequestQueue(getApplicationContext()).add(stringRequest).setShouldCache(false);
-
-
-
-    }
 
 
 }

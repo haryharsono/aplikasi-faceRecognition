@@ -48,7 +48,7 @@ public class adapterKehadiran extends RecyclerView.Adapter<adapterKehadiran.hold
 
         holder.cardView.setOnClickListener(v -> {
             Intent intent=new Intent(context.getApplicationContext(), detailKehadiranActivity.class);
-            intent.putExtra("daftar_kehadiran",matkul.getNamaMatkul());
+            intent.putExtra("detail_kehadiran_matkul",matkul.getNamaMatkul());
             context.startActivity(intent);
         });
     }

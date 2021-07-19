@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
     }
     private void filter(String text) {
         ArrayList<matkul> filteredList = new ArrayList<>();
-        for (matkul item : list) {
+            for (matkul item : list) {
             if (item.getNamaMatkul().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
             }
