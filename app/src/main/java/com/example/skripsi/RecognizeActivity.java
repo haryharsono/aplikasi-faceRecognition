@@ -47,7 +47,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
     DBuser dBuser;
     String []dataList;
     String id;
-    String matakuliah;
+    matkul matakuliah;
     private static String TAG = TrainActivity.class.getSimpleName();
     private CameraBridgeViewBase openCVCamera;
     private Mat rgba,gray;
@@ -113,7 +113,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         dataList=dBuser.getData(FieldUser.NAMA_TABLE);
         id=dataList[0];
         Intent intent=getIntent();
-        matakuliah=intent.getExtras().getString("matakuliah");
+        matakuliah=intent.getParcelableExtra("matakuliah");
         System.out.println("jadwalnya :"+matakuliah);
         openCVCamera = findViewById(R.id.java_camera_view2);
         openCVCamera.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);
@@ -232,8 +232,9 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
                 boolean status = jsonObject.getBoolean("error");
                 if (!status) {
                     Toast.makeText(getApplicationContext(), "Berhasil ", Toast.LENGTH_SHORT).show();
-                    Intent swap = new Intent(RecognizeActivity.this, checkScanActivity.class);
-                    startActivity(swap);
+                    Intent intent = new Intent(RecognizeActivity.this, checkScanActivity.class);
+                    intent.putExtra("zoom",matakuliah);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
@@ -248,7 +249,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("id_mahasiswa", id);
-                params.put("id_jadwal", matakuliah );
+                params.put("id_jadwal", matakuliah.getNamaMatkul() );
 
                 return params;
             }

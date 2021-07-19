@@ -15,7 +15,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:fontFamily="sans-serif"
-        android:text="Data Wajah Tersimpan"
+        android:text="Data Wajah Cocok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -25,15 +25,16 @@
         android:layout_width="152dp"
         android:layout_height="157dp"
         android:src="@drawable/ceklist" />
-    <Button
-        android:id="@+id/scan_wajah"
-        android:layout_marginTop="20dp"
+    <TextView
+        android:id="@+id/link_kelas"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:layout_width="220dp"
+        android:background="@drawable/button_custom"
         android:text="Menuju Kelas"
+        android:textSize="30dp"
 
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
-        />
 </LinearLayout>

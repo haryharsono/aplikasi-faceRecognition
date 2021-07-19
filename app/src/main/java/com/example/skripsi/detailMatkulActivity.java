@@ -49,11 +49,12 @@ public class detailMatkulActivity extends AppCompatActivity {
     TextView jamMulai;
     TextView jamSelesai;
     DBuser dBuser;
-    String mataKuliah;
+    matkul mataKuliah;
     String []dataList;
     String id;
     TextView hari;
     String cekHari="";
+    String zoom;
     boolean cek=false;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
@@ -78,6 +79,7 @@ public class detailMatkulActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         matkul matkul=intent.getParcelableExtra("matkul");
+        mataKuliah=matkul;
         dosen.setText("Dosen :"+matkul.getDosen());
         hari.setText("Hari :"+matkul.getHari());
         matakul.setText(matkul.getNamaMatkul());
@@ -152,7 +154,7 @@ public class detailMatkulActivity extends AppCompatActivity {
                 if(cek){
                    // startActivity(new Intent(getApplicationContext(),RecognizeActivity.class));
                     Intent intent=new Intent(getApplicationContext(), RecognizeActivity.class);
-                    intent.putExtra("matakuliah",matakul.getText().toString());
+                    intent.putExtra("matakuliah",mataKuliah);
                     startActivity(intent);
                 } else{
                     Toast.makeText(getApplicationContext(),"Kelas Tidak Tersedia", Toast.LENGTH_LONG).show();
