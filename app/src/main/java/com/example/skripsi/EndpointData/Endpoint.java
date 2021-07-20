@@ -1,7 +1,7 @@
 package com.example.skripsi.EndpointData;
 
 public class Endpoint {
-    public static String URL="https://anr.my.id/facerecognation/";
+    public static String URL="http://anr.my.id/facerecognation/";
     public static String CEK_LOGIN="cek-login-mahasiswa";
     public static String CEK_KELAS="cek-kelas";
     public static String CEK_JADWAL="cek-jadwal";

@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class loginActivity extends AppCompatActivity {
-    EditText nip;
+    EditText nim;
     EditText password;
     DBuser dbuser;
     @Override
@@ -39,7 +39,7 @@ public class loginActivity extends AppCompatActivity {
 
 
         dbuser = new DBuser( loginActivity.this );
-        nip=findViewById(R.id.nim_login);
+        nim=findViewById(R.id.nim_login);
         password=findViewById(R.id.password_login);
 
 
@@ -87,7 +87,7 @@ public class loginActivity extends AppCompatActivity {
         })  {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("nim", nip.getText().toString());
+                params.put("nim", nim.getText().toString());
                 params.put("password", password.getText().toString());
 
                 return params;
