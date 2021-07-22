@@ -10,6 +10,9 @@ public class matkul implements Parcelable {
     private String Dosen;
     private String hari;
     private String zoom;
+    private String idZoom;
+    private String passwordZoom;
+
 
     public matkul(){
 
@@ -21,6 +24,8 @@ public class matkul implements Parcelable {
         Dosen = in.readString();
         hari = in.readString();
         zoom = in.readString();
+        idZoom=in.readString();
+        passwordZoom=in.readString();
     }
 
     public static final Creator<matkul> CREATOR = new Creator<matkul>() {
@@ -86,6 +91,21 @@ public class matkul implements Parcelable {
         Dosen = dosen;
     }
 
+    public String getIdZoom() {
+        return idZoom;
+    }
+
+    public void setIdZoom(String idZoom) {
+        this.idZoom = idZoom;
+    }
+
+    public String getPasswordZoom() {
+        return passwordZoom;
+    }
+
+    public void setPasswordZoom(String passwordZoom) {
+        this.passwordZoom = passwordZoom;
+    }
 
     @Override
     public int describeContents() {
@@ -100,5 +120,7 @@ public class matkul implements Parcelable {
         dest.writeString(Dosen);
         dest.writeString(hari);
         dest.writeString(zoom);
+        dest.writeString(idZoom);
+        dest.writeString(passwordZoom);
     }
 }

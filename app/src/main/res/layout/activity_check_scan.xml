@@ -26,7 +26,31 @@
         android:layout_height="157dp"
         android:src="@drawable/ceklist" />
     <TextView
-        android:id="@+id/link_kelas"
+        android:id="@+id/link_kelas_check"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="220dp"
+        android:background="@drawable/button_custom"
+        android:text="Menuju Kelas"
+        android:textSize="30dp"
+
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/id_kelas_check"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="220dp"
+        android:background="@drawable/button_custom"
+        android:text="Menuju Kelas"
+        android:textSize="30dp"
+
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/password_kelas_check"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"

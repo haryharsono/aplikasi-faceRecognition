@@ -161,7 +161,7 @@ public class registerActivity extends AppCompatActivity {
                                 JSONObject object = data.getJSONObject(i);
                                 kelasMhs[i] = object.getString("nama_kelas");
                             }
-                            kelas.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, kelasMhs));
+                            kelas.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, kelasMhs));
                         }
 
                     } catch (JSONException e) {
@@ -194,7 +194,7 @@ public class registerActivity extends AppCompatActivity {
                                 JSONObject object = data.getJSONObject(i);
                                 semesterMhs[i] = object.getString("semester");
                             }
-                            semester.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, semesterMhs));
+                            semester.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, semesterMhs));
                         }
 
                     } catch (JSONException e) {

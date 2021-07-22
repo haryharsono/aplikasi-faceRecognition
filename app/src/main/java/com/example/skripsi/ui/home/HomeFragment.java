@@ -116,7 +116,8 @@ public class HomeFragment extends Fragment {
                             jadwal.setHari(jsonObject1.getString("hari"));
 //                            jadwal.setTanggal(jsonObject1.getString("Tanggal"));
                             jadwal.setZoom(jsonObject1.getString("zoom"));
-
+                        jadwal.setZoom(jsonObject1.getString("id_zoom"));
+                        jadwal.setZoom(jsonObject1.getString("password_zoom"));
                             list.add(jadwal);
                             adapterMatkul = new adapterMatkul(list, context);
                             recyclerView.setAdapter(adapterMatkul);
