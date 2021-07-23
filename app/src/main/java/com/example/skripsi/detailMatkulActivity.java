@@ -142,7 +142,7 @@ public class detailMatkulActivity extends AppCompatActivity {
         Log.d("waktu sekarang ",waktuSekarang+"");
         Log.d("waktu mulai ",parseMulai+"");
         Log.d("waktu selesai ",parseSelesai+"");
-        if(matkul.getHari().equals(cekHari));{
+        if(matkul.getHari().equals(cekHari)){
             if(parseMulai<=waktuSekarang && waktuSekarang<=parseSelesai){
                 cek=true;
             }
