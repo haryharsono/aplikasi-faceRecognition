@@ -34,6 +34,8 @@ public class checkScanActivity extends AppCompatActivity {
         matkul matakuliah=intent.getParcelableExtra("zoom");
 
         System.out.println("cekk :"+matakuliah.getZoom());
+        System.out.println("cekk :"+matakuliah.getIdZoom());
+        System.out.println("cekk :"+matakuliah.getPasswordZoom());
         link.setText(matakuliah.getZoom());
         id.setText(matakuliah.getIdZoom());
         password.setText(matakuliah.getPasswordZoom());

@@ -135,8 +135,9 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
                     }
                     recognizeImage(gray);
                 }
-            }else
+            }else{
                 Toast.makeText(getApplicationContext(), "Unknown Face", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
