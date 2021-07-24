@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="10dp"
     tools:context=".detailMatkulActivity">
 
     <TextView
@@ -27,7 +27,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="133dp"
+            android:layout_height="120dp"
             android:src="@drawable/book" />
 
         <TextView
