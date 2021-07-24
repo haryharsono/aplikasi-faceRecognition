@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Matkul"
-            android:textSize="40dp"
+            android:textSize="25dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:fontFamily="sans-serif"

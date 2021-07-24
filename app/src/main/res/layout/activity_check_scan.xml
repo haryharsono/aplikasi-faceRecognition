@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".checkScanActivity"
     android:orientation="vertical"
-    android:layout_marginTop="100dp">
+    android:layout_marginTop="20dp">
 
     <TextView
         android:gravity="center"
