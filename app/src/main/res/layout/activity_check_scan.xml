@@ -20,45 +20,82 @@
         android:layout_height="wrap_content"
         />
     <ImageView
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:layout_width="152dp"
         android:layout_height="157dp"
         android:src="@drawable/ceklist" />
     <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Link Zoom"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
+    <TextView
         android:id="@+id/link_kelas_check"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="220dp"
         android:background="@drawable/button_custom"
         android:text="Menuju Kelas"
-        android:textSize="30dp"
+        android:textSize="20dp"
 
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Id Zoom"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
     <TextView
         android:id="@+id/id_kelas_check"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="220dp"
         android:background="@drawable/button_custom"
         android:text="Menuju Kelas"
-        android:textSize="30dp"
+        android:textSize="20dp"
 
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password Zoom"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
     <TextView
         android:id="@+id/password_kelas_check"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="220dp"
         android:background="@drawable/button_custom"
         android:text="Menuju Kelas"
-        android:textSize="30dp"
+        android:textSize="20dp"
 
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="++ Tekan Untuk copy ++"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
 </LinearLayout>
