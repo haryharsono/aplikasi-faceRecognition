@@ -95,7 +95,7 @@ public class detailKehadiranActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
 
                 HashMap<String, String> hashMap=new HashMap<>();
-                hashMap.put("id",id.substring(1));
+                hashMap.put("id",id);
                 hashMap.put("id_jadwal",detailKehadiranMatkul);
                 Log.d("tes",id.length()+id+"="+id);
 
